@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changing Background Color</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: turquoise;
+      transition: background-color 0.5s ease;
+    }
+    h1 {
+      font-size: 2rem;
+      color: black;
+    }
+    select {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Changing Background Color in JavaScript</h1>
+  <select id="colorPicker" onchange="changeBackgroundColor()">
+    <option value="turquoise" selected>Turquoise</option>
+    <option value="lightblue">Light Blue</option>
+    <option value="lightgreen">Light Green</option>
+    <option value="yellow">Yellow</option>
+    <option value="orange">Orange</option>
+    <option value="pink">Pink</option>
+    <option value="white">White</option>
+    <option value="gray">Gray</option>
+  </select>
+
+  <script>
+    function changeBackgroundColor() {
+      const colorPicker = document.getElementById("colorPicker");
+      const selectedColor = colorPicker.value;
+      document.body.style.backgroundColor = selectedColor;
+    }
+  </script>
+</body>
+</html>
