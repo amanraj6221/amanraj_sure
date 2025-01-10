@@ -3,27 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Changing Background & Image</title>
+  <title>Automatic Image Slideshow</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
-      background-color: turquoise;
-      transition: background-color 0.5s ease;
+      background-color: white;
     }
     h1 {
       font-size: 2rem;
       color: black;
-    }
-    select {
-      padding: 10px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      outline: none;
-      margin-bottom: 20px;
     }
     .image-container {
       display: flex;
@@ -32,43 +23,27 @@
       margin-top: 20px;
     }
     img {
-      width: 500px;
+      width: 600px;
       height: auto;
       border: 5px solid black;
-      cursor: pointer;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.5s ease-in-out;
     }
   </style>
 </head>
 <body>
-  <h1>Changing Background and Image in JavaScript</h1>
-  <select id="colorPicker" onchange="changeBackgroundColor()">
-    <option value="turquoise" selected>Turquoise</option>
-    <option value="lightblue">Light Blue</option>
-    <option value="lightgreen">Light Green</option>
-    <option value="yellow">Yellow</option>
-    <option value="orange">Orange</option>
-    <option value="pink">Pink</option>
-    <option value="white">White</option>
-    <option value="gray">Gray</option>
-  </select>
+  <h1>Automatic Image Slideshow</h1>
 
   <div class="image-container">
-    <img id="changingImage" src="image1.jpg" alt="Dynamic Image" onclick="changeImage()">
+    <img id="Image" src="image1.jpg" alt="Slideshow Image">
   </div>
 
   <script>
-    function changeBackgroundColor() {
-      const colorPicker = document.getElementById("colorPicker");
-      const selectedColor = colorPicker.value;
-      document.body.style.backgroundColor = selectedColor;
-    }
-
-    let images = ["download (1).jpg", "download (2).jpg", "download (3).jpg", "download (4).jpg", "download (5).jpg", "download (6).jpg"]; // Add your image paths here
+    // Array of image paths
+    let images = ["51.jpeg", "52.jpeg", "53.jpeg", "54.jpeg","55.jpeg", "56.jpeg"];
     let currentIndex = 0;
 
     function changeImage() {
-      const imgElement = document.getElementById("changingImage");
+      const imgElement = document.getElementById("slideshowImage");
       currentIndex = (currentIndex + 1) % images.length; // Cycle through images
       imgElement.style.opacity = "0"; // Fade out effect
       setTimeout(() => {
@@ -76,6 +51,9 @@
         imgElement.style.opacity = "1"; // Fade in effect
       }, 500);
     }
+
+    // Change image every 1 second (1000 milliseconds)
+    setInterval(changeImage, 1000);
   </script>
 </body>
 </html>
