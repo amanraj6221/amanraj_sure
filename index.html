@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Changing Background Color</title>
+  <title>Changing Background & Image</title>
   <style>
     body {
       margin: 0;
@@ -23,11 +23,25 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       outline: none;
+      margin-bottom: 20px;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    img {
+      width: 500px;
+      height: auto;
+      border: 5px solid black;
+      cursor: pointer;
+      transition: opacity 0.5s ease;
     }
   </style>
 </head>
 <body>
-  <h1>Changing Background Color in JavaScript</h1>
+  <h1>Changing Background and Image in JavaScript</h1>
   <select id="colorPicker" onchange="changeBackgroundColor()">
     <option value="turquoise" selected>Turquoise</option>
     <option value="lightblue">Light Blue</option>
@@ -39,11 +53,28 @@
     <option value="gray">Gray</option>
   </select>
 
+  <div class="image-container">
+    <img id="changingImage" src="image1.jpg" alt="Dynamic Image" onclick="changeImage()">
+  </div>
+
   <script>
     function changeBackgroundColor() {
       const colorPicker = document.getElementById("colorPicker");
       const selectedColor = colorPicker.value;
       document.body.style.backgroundColor = selectedColor;
+    }
+
+    let images = ["download (1).jpg", "download (2).jpg", "download (3).jpg", "download (4).jpg", "download (5).jpg", "download (6).jpg"]; // Add your image paths here
+    let currentIndex = 0;
+
+    function changeImage() {
+      const imgElement = document.getElementById("changingImage");
+      currentIndex = (currentIndex + 1) % images.length; // Cycle through images
+      imgElement.style.opacity = "0"; // Fade out effect
+      setTimeout(() => {
+        imgElement.src = images[currentIndex];
+        imgElement.style.opacity = "1"; // Fade in effect
+      }, 500);
     }
   </script>
 </body>
